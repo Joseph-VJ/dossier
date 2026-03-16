@@ -621,7 +621,7 @@ Phase B is complete when ALL of the following are true:
 
 **Detailed steps:**
 
-[ ] C2.1. Create a new file `src/dossier/mechanism.py`:
+[x] C2.1. Create a new file `src/dossier/mechanism.py`:
   - Class `MechanismSynthesizer`:
     - `__init__(self, settings: Settings)`.
     - `synthesize(self, hypothesis: HypothesisCandidate, evidence_context: str) -> Mechanism`:
@@ -635,11 +635,11 @@ Phase B is complete when ALL of the following are true:
   - Class `DemoMechanismSynthesizer`:
     - Returns hardcoded `Mechanism` objects.
 
-[ ] C2.2. Write tests in `tests/test_mechanism.py`:
+[x] C2.2. Write tests in `tests/test_mechanism.py`:
   - Test with mocked LLM → verify mechanism has name, description, steps.
   - Test fallback on failure → returns placeholder mechanism.
 
-[ ] C2.3. Run validation.
+[x] C2.3. Run validation.
 
 ---
 
@@ -651,7 +651,7 @@ Phase B is complete when ALL of the following are true:
 
 **Detailed steps:**
 
-[ ] C3.1. Create a new file `src/dossier/sanity.py`:
+[x] C3.1. Create a new file `src/dossier/sanity.py`:
   - Class `SanityChecker`:
     - `check(self, hypothesis: HypothesisCandidate, mechanism: Mechanism, typed_atoms: list[TypedAtom]) -> tuple[bool, list[str]]`:
       - Returns `(passed, list_of_failure_reasons)`.
@@ -662,13 +662,13 @@ Phase B is complete when ALL of the following are true:
       - Check 5: hypothesis title must not be empty or generic ("Unknown", "TBD").
     - Return `(True, [])` if all checks pass. Return `(False, [reason1, reason2, ...])` if any fail.
 
-[ ] C3.2. Write tests in `tests/test_sanity.py`:
+[x] C3.2. Write tests in `tests/test_sanity.py`:
   - Test a valid hypothesis passes all checks.
   - Test a hypothesis with 0 assumptions fails.
   - Test a mechanism with 0 steps fails.
   - Test a hypothesis with empty source_atom_ids fails.
 
-[ ] C3.3. Run validation.
+[x] C3.3. Run validation.
 
 ---
 
@@ -680,7 +680,7 @@ Phase B is complete when ALL of the following are true:
 
 **Detailed steps:**
 
-[ ] C4.1. Create a new file `src/dossier/counterfactual.py`:
+[x] C4.1. Create a new file `src/dossier/counterfactual.py`:
   - Class `CounterfactualExpander`:
     - `__init__(self, settings: Settings)`.
     - `expand(self, hypothesis: HypothesisCandidate, mechanism: Mechanism) -> list[CounterfactualTest]`:
@@ -690,11 +690,11 @@ Phase B is complete when ALL of the following are true:
   - Class `DemoCounterfactualExpander`:
     - Returns 1 hardcoded `CounterfactualTest`.
 
-[ ] C4.2. Add config field: `counterfactual_top_k: int` — default `5`. Only expand counterfactuals for the top-K hypotheses by confidence.
+[x] C4.2. Add config field: `counterfactual_top_k: int` — default `5`. Only expand counterfactuals for the top-K hypotheses by confidence.
 
-[ ] C4.3. Write tests in `tests/test_counterfactual.py`.
+[x] C4.3. Write tests in `tests/test_counterfactual.py`.
 
-[ ] C4.4. Run validation.
+[x] C4.4. Run validation.
 
 ---
 
@@ -706,7 +706,7 @@ Phase B is complete when ALL of the following are true:
 
 **Detailed steps:**
 
-[ ] C5.1. Create a new file `src/dossier/ranking.py`:
+[x] C5.1. Create a new file `src/dossier/ranking.py`:
   - Class `InventionRanker`:
     - `__init__(self, settings: Settings)`.
     - `rank(self, candidates: list[dict]) -> list[RankedInsight]`:
@@ -724,15 +724,15 @@ Phase B is complete when ALL of the following are true:
   - Class `DemoInventionRanker`:
     - Returns the `DemoLlmClient` style insights (existing behavior for demo mode).
 
-[ ] C5.2. Add config field: `ranking_top_k: int` — default `3`. Final number of insights to output.
+[x] C5.2. Add config field: `ranking_top_k: int` — default `3`. Final number of insights to output.
 
-[ ] C5.3. Write tests in `tests/test_ranking.py`:
+[x] C5.3. Write tests in `tests/test_ranking.py`:
   - Test that candidates below 0.48 are discarded.
   - Test that classification labels are correct for score thresholds.
   - Test that top-K sorting works.
   - Test that sanity-failed candidates are filtered.
 
-[ ] C5.4. Run validation.
+[x] C5.4. Run validation.
 
 ---
 

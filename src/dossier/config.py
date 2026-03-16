@@ -44,6 +44,8 @@ class Settings(BaseSettings):
     beam_size: int = Field(default=16, ge=1, alias="BEAM_SIZE")
     cross_domain_ratio: float = Field(default=0.2, ge=0.0, le=1.0, alias="CROSS_DOMAIN_RATIO")
     beam_model: str | None = Field(default=None, alias="BEAM_MODEL")
+    counterfactual_top_k: int = Field(default=5, ge=1, alias="COUNTERFACTUAL_TOP_K")
+    ranking_top_k: int = Field(default=3, ge=1, alias="RANKING_TOP_K")
     max_atoms_per_beam: int = Field(default=32, ge=1, alias="MAX_ATOMS_PER_BEAM")
 
     @property

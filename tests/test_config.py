@@ -23,6 +23,8 @@ def test_default_settings() -> None:
     assert s.beam_size == 16
     assert s.cross_domain_ratio == 0.2
     assert s.beam_model is None
+    assert s.counterfactual_top_k == 5
+    assert s.ranking_top_k == 3
     assert s.max_atoms_per_beam == 32
 
 

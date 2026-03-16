@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import logging
-import re
 from typing import Any, Protocol
 
 from litellm import completion
@@ -11,6 +10,7 @@ from pydantic import ValidationError
 from dossier.atomizer import EvidenceAtom
 from dossier.config import Settings
 from dossier.contracts import HypothesisCandidate
+from dossier.llm_utils import extract_content_text
 
 logger = logging.getLogger(__name__)
 
@@ -25,28 +25,8 @@ class HypothesisGenerator(Protocol):
         ...
 
 
-def _extract_content_text(content: Any) -> str:
-    if isinstance(content, list):
-        text = "".join(
-            str(item.get("text", ""))
-            for item in content
-            if isinstance(item, dict)
-        )
-    elif isinstance(content, str):
-        text = content
-    else:
-        msg = f"Unsupported response content type: {type(content)!r}"
-        raise ValueError(msg)
-
-    text = text.strip()
-    if text.startswith("```"):
-        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
-        text = re.sub(r"\s*```$", "", text)
-    return text.strip()
-
-
 def _parse_hypothesis_payload(content: Any) -> list[dict[str, Any]]:
-    text = _extract_content_text(content)
+    text = extract_content_text(content)
     if not text:
         msg = "Response did not contain JSON."
         raise ValueError(msg)
