@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "source_atom_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Atom Ids",
+      "type": "array"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "summary",
+    "source_atom_ids",
+    "assumptions"
+  ],
+  "title": "Hypothesis",
+  "type": "object"
+}

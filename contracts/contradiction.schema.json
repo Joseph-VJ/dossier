@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "left_source_id": {
+      "title": "Left Source Id",
+      "type": "string"
+    },
+    "right_source_id": {
+      "title": "Right Source Id",
+      "type": "string"
+    },
+    "severity": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Severity",
+      "type": "number"
+    }
+  },
+  "required": [
+    "left_source_id",
+    "right_source_id",
+    "description",
+    "severity"
+  ],
+  "title": "Contradiction",
+  "type": "object"
+}

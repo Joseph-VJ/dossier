@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "steps": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Steps",
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "steps"
+  ],
+  "title": "Mechanism",
+  "type": "object"
+}

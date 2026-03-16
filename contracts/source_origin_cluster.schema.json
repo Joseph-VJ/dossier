@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "independence_note": {
+      "title": "Independence Note",
+      "type": "string"
+    },
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "member_source_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Member Source Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "label",
+    "member_source_ids",
+    "independence_note"
+  ],
+  "title": "SourceOriginCluster",
+  "type": "object"
+}

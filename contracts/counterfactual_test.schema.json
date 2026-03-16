@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "assumption": {
+      "title": "Assumption",
+      "type": "string"
+    },
+    "challenge_prompt": {
+      "title": "Challenge Prompt",
+      "type": "string"
+    },
+    "expected_failure_mode": {
+      "title": "Expected Failure Mode",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "assumption",
+    "challenge_prompt",
+    "expected_failure_mode"
+  ],
+  "title": "CounterfactualTest",
+  "type": "object"
+}

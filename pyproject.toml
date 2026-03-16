@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dossier"
+version = "0.1.0"
+description = "Dossier V0 scaffold for evidence-traced investigations"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "beautifulsoup4>=4.12.3",
+  "duckduckgo-search>=7.5.5",
+  "httpx>=0.28.1",
+  "litellm>=1.63.11",
+  "pydantic>=2.10.6",
+  "pydantic-settings>=2.8.1",
+  "readability-lxml>=0.8.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "bandit>=1.8.2",
+  "mypy>=1.15.0",
+  "pytest>=8.3.5",
+  "pytest-cov>=6.0.0",
+  "ruff>=0.11.0",
+]
+
+[project.scripts]
+dossier = "dossier.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+pretty = true
+show_error_codes = true
+mypy_path = "src"
+packages = ["dossier"]
+
+[[tool.mypy.overrides]]
+module = [
+  "bs4",
+  "duckduckgo_search",
+  "litellm",
+  "readability",
+]
+ignore_missing_imports = true
+
+[tool.bandit]
+exclude_dirs = ["tests", "archive_old_unwanted"]

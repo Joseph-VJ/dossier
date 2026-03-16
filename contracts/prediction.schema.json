@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "confidence": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "expected_signal": {
+      "title": "Expected Signal",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "observable": {
+      "title": "Observable",
+      "type": "string"
+    },
+    "time_horizon": {
+      "title": "Time Horizon",
+      "type": "string"
+    }
+  },
+  "required": [
+    "observable",
+    "expected_signal",
+    "time_horizon",
+    "confidence"
+  ],
+  "title": "Prediction",
+  "type": "object"
+}

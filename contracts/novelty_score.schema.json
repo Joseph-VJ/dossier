@@ -1,0 +1,71 @@
+{
+  "properties": {
+    "coherence_penalty": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Coherence Penalty",
+      "type": "number"
+    },
+    "cross_domain_transfer": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Cross Domain Transfer",
+      "type": "number"
+    },
+    "mechanism_quality": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Mechanism Quality",
+      "type": "number"
+    },
+    "novelty_distance": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Novelty Distance",
+      "type": "number"
+    },
+    "predictive_power": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Predictive Power",
+      "type": "number"
+    },
+    "synthesis_depth": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Synthesis Depth",
+      "type": "number"
+    },
+    "token_efficiency": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Token Efficiency",
+      "type": "number"
+    },
+    "total": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Total"
+    }
+  },
+  "required": [
+    "novelty_distance",
+    "synthesis_depth",
+    "mechanism_quality",
+    "predictive_power",
+    "cross_domain_transfer",
+    "token_efficiency",
+    "coherence_penalty"
+  ],
+  "title": "NoveltyScore",
+  "type": "object"
+}

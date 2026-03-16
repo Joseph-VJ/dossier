@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "conclusion": {
+      "title": "Conclusion",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "premises": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Premises",
+      "type": "array"
+    },
+    "reasoning_notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Reasoning Notes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "conclusion",
+    "premises",
+    "reasoning_notes"
+  ],
+  "title": "ProofTree",
+  "type": "object"
+}
