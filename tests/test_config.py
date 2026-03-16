@@ -20,6 +20,10 @@ def test_default_settings() -> None:
     assert s.trigger_enabled is True
     assert s.trigger_min_confidence == 0.5
     assert s.shallow_synthesis_model is None
+    assert s.beam_size == 16
+    assert s.cross_domain_ratio == 0.2
+    assert s.beam_model is None
+    assert s.max_atoms_per_beam == 32
 
 
 def test_database_path_from_url() -> None:

@@ -555,7 +555,7 @@ Phase B is complete when ALL of the following are true:
 
 ---
 
-## Phase C: Build the ADEPT-DS Invention Kernel — STATUS: NOT STARTED
+## Phase C: Build the ADEPT-DS Invention Kernel — STATUS: IN PROGRESS
 
 **Goal:** Replace the single-shot synthesis call with the full multi-stage ADEPT-DS pipeline: hypothesis beam generation → mechanism synthesis → sanity checks → counterfactual expansion → invention ranking → output packaging.
 
@@ -571,7 +571,7 @@ Phase B is complete when ALL of the following are true:
 
 **Detailed steps:**
 
-[ ] C1.1. Add new Pydantic models to `src/dossier/contracts/models.py`:
+[x] C1.1. Add new Pydantic models to `src/dossier/contracts/models.py`:
   - `HypothesisCandidate(BaseModel)`:
     - `id: str` — auto-generated with prefix `"hyp"`.
     - `title: str`
@@ -581,15 +581,15 @@ Phase B is complete when ALL of the following are true:
     - `assumptions: list[str]`
     - `confidence: float` (0.0-1.0)
 
-[ ] C1.2. Add config fields to `Settings`:
+[x] C1.2. Add config fields to `Settings`:
   - `beam_size: int` — default `16`. Number of hypotheses to generate per beam.
   - `cross_domain_ratio: float` — default `0.2`. Minimum fraction of beam that must be cross-domain.
   - `beam_model: str | None` — optional cheaper model for beam generation. If `None`, uses `llm_model`.
 
-[ ] C1.3. Create a new file `src/dossier/hypothesis.py`:
+[x] C1.3. Create a new file `src/dossier/hypothesis.py`:
   - Class `HypothesisBeamGenerator`:
     - `__init__(self, settings: Settings)`.
-    - `generate(self, question: str, evidence_summary: str, typed_atoms: list[TypedAtom]) -> list[HypothesisCandidate]`:
+    - `generate(self, question: str, evidence_summary: str, typed_atoms: list[EvidenceAtom]) -> list[HypothesisCandidate]`:
       1. Build a system prompt:
          - "You are a hypothesis generation engine. Generate {beam_size} candidate hypotheses from the evidence."
          - "At least {int(beam_size * cross_domain_ratio)} hypotheses must be cross-domain analogies."
@@ -604,12 +604,12 @@ Phase B is complete when ALL of the following are true:
     - Returns 4 hardcoded `HypothesisCandidate` objects (1 cross-domain).
   - Factory function `build_hypothesis_generator(settings: Settings)`.
 
-[ ] C1.4. Write tests in `tests/test_hypothesis.py`:
+[x] C1.4. Write tests in `tests/test_hypothesis.py`:
   - Test `DemoHypothesisBeamGenerator` returns expected count with at least 1 cross-domain.
   - Test `HypothesisBeamGenerator` with mocked completion → verify correct parsing.
   - Test truncation if LLM returns more hypotheses than beam_size.
 
-[ ] C1.5. Run validation: `ruff check`, `mypy`, `pytest`. All must pass.
+[x] C1.5. Run validation: `ruff check`, `mypy`, `pytest`. All must pass.
 
 ---
 

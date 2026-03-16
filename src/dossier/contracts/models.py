@@ -88,6 +88,16 @@ class Hypothesis(BaseModel):
     assumptions: list[str]
 
 
+class HypothesisCandidate(BaseModel):
+    id: str = Field(default_factory=lambda: new_id("hyp"))
+    title: str
+    summary: str
+    source_atom_ids: list[str] = Field(min_length=2)
+    is_cross_domain: bool
+    assumptions: list[str]
+    confidence: float = Field(ge=0.0, le=1.0)
+
+
 class Mechanism(BaseModel):
     id: str = Field(default_factory=lambda: new_id("mechanism"))
     name: str

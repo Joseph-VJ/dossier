@@ -41,6 +41,10 @@ class Settings(BaseSettings):
     trigger_enabled: bool = Field(default=True, alias="TRIGGER_ENABLED")
     trigger_min_confidence: float = Field(default=0.5, alias="TRIGGER_MIN_CONFIDENCE")
     shallow_synthesis_model: str | None = Field(default=None, alias="SHALLOW_SYNTHESIS_MODEL")
+    beam_size: int = Field(default=16, ge=1, alias="BEAM_SIZE")
+    cross_domain_ratio: float = Field(default=0.2, ge=0.0, le=1.0, alias="CROSS_DOMAIN_RATIO")
+    beam_model: str | None = Field(default=None, alias="BEAM_MODEL")
+    max_atoms_per_beam: int = Field(default=32, ge=1, alias="MAX_ATOMS_PER_BEAM")
 
     @property
     def database_path(self) -> Path:

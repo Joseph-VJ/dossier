@@ -6,6 +6,7 @@ from dossier.contracts.models import (
     CounterfactualTest,
     EvidencePacket,
     Hypothesis,
+    HypothesisCandidate,
     InsightClass,
     InvestigationMetrics,
     InvestigationPlan,
@@ -231,6 +232,18 @@ def test_contradiction_creates() -> None:
 def test_hypothesis_creates() -> None:
     h = Hypothesis(title="t", summary="s", source_atom_ids=["a"], assumptions=["a"])
     assert h.id.startswith("hypothesis_")
+
+
+def test_hypothesis_candidate_creates() -> None:
+    candidate = HypothesisCandidate(
+        title="candidate",
+        summary="summary",
+        source_atom_ids=["atom_1", "atom_2"],
+        is_cross_domain=True,
+        assumptions=["a1"],
+        confidence=0.6,
+    )
+    assert candidate.id.startswith("hyp_")
 
 
 def test_synthesis_result_defaults() -> None:
